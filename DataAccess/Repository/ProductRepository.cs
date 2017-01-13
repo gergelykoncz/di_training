@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DataAccess.Entities;
 
 namespace DataAccess.Repository
@@ -18,6 +19,16 @@ namespace DataAccess.Repository
                 StockLevel = 100
             }
             };
+        }
+
+        public override void Update(Product entity)
+        {
+            Product original = this._inner.Single(x => x.ID == entity.ID);
+            original.Category = entity.Category;
+            original.Description = entity.Description;
+            original.Name = entity.Name;
+            original.Price = entity.Price;
+            original.StockLevel = entity.StockLevel;
         }
     }
 }

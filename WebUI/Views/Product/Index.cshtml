@@ -13,16 +13,23 @@
             <th>Name</th>
             <th>Category</th>
             <th>Price</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var product in Model)
         {
             <tr>
-                <td>@product.ID</td>
+                <td>@Html.ActionLink("Product Details", "Details", new { id = product.ID })</td>
                 <td>@product.Name</td>
                 <td>@product.Category</td>
                 <td>@product.Price</td>
+                <td>
+                    @using (Html.BeginForm("Delete", "Product", new {id = product.ID}))
+                {
+                    <input type="submit" value="Delete"/>
+                }
+                </td>
             </tr>
         }
     </tbody>

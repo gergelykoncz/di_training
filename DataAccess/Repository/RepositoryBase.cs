@@ -7,7 +7,7 @@ namespace DataAccess.Repository
 {
     public abstract class RepositoryBase<T> : IRepository<T> where T: IEntity
     {
-        private List<T> _inner = new List<T>();
+        protected List<T> _inner = new List<T>();
 
         protected abstract IEnumerable<T> fillData();
 
@@ -34,6 +34,16 @@ namespace DataAccess.Repository
         public virtual T GetOne(Func<T, bool> predicate)
         {
             return this._inner.SingleOrDefault(predicate);
+        }
+
+        public virtual void Update(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(T entity)
+        {
+            this._inner.Remove(entity);
         }
     }
 }

@@ -37,5 +37,38 @@ namespace WebUI.Controllers
             }
             return View(product);
         }
+
+        [HttpGet]
+        public ViewResult Edit(int id)
+        {
+            var product = this._productFacade.GetProductById(id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                this._productFacade.EditProduct(product);
+                return RedirectToAction("Index");
+            }
+            return View(product);
+        }
+
+        [HttpGet]
+        public ViewResult Details(int id)
+        {
+            var product = this._productFacade.GetProductById(id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var product = this._productFacade.GetProductById(id);
+            this._productFacade.DeleteProduct(product);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -10,5 +10,7 @@ namespace BusinessLogic.Facade
         Product GetProductById(int id);
         IEnumerable<Product> FetchProductsInStock();
         IEnumerable<Product> FetchProductsByCategory(string category);
+        void EditProduct(Product product);
+        void DeleteProduct(Product product);
     }
 }

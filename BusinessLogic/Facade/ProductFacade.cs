@@ -1,6 +1,7 @@
 ﻿using DataAccess.Entities;
 using DataAccess.Repository;
 using System.Collections.Generic;
+using System;
 
 namespace BusinessLogic.Facade
 {
@@ -16,6 +17,16 @@ namespace BusinessLogic.Facade
         public void AddNewProduct(Product product)
         {
             this._repository.Add(product);
+        }
+
+        public void DeleteProduct(Product product)
+        {
+            this._repository.Delete(product);
+        }
+
+        public void EditProduct(Product product)
+        {
+            this._repository.Update(product);
         }
 
         public IEnumerable<Product> FetchAllProducts()
